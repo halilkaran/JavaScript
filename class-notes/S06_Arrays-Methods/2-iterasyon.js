@@ -36,7 +36,31 @@ console.log(diziIsaretliTopla(koordinatlar));
 
 //* ÖDEV
 //*----------------------------------------------------------
+const Animals = [
+  "elephant",
+  "camel",
+  "bird",
+  "camel",
+  "Mouse",
+  "bird",
+  "camel",
+];
+const Find = prompt("Please Enter Your Animals").toLowerCase();
 
+const findAnimal = (Find, Arrays) => {
+  let counter = 0;
+  for (animal of Arrays) {
+    if (animal == Find) {
+      counter++;
+    }
+  }
+  if (counter == 0) {
+    return `Sorry we have not ${Find}`;
+  } else {
+    return `We have ${counter} ${Find}`;
+  }
+};
+console.log(findAnimal(Find, Animals));
 
 //* ======================================================
 //*                   FOR OF DÖNGÜSÜ
