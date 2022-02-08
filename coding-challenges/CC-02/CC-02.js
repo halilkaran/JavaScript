@@ -1,11 +1,10 @@
 const fibonacci = (number) => {
-    let summ= 1;
+    let Fn= 1;
     if (number >2) {
-        summ = fibonacci(number-1) + fibonacci(number-2); 
-    }
-        
-     
-    return summ;
+        Fn = fibonacci(number-1) + fibonacci(number-2); 
+    }  
+    return Fn;
 }
-console.log(fibonacci(16)); 
+console.log(fibonacci(12)); 
 
+ 

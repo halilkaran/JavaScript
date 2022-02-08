@@ -1,5 +1,5 @@
  const sentences = "My name is Halil. I come from Turkey.";
- const reversedArray = (sentences) => {
+ const reversedArray = function(sentences)  {
    const array1 = sentences.split(" ");
    let array2 = [];
 
