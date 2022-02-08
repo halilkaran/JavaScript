@@ -74,3 +74,8 @@ for (let arac of araclar) {
   yazi += arac + " "; // arac:  dizinin her bir elemanini temsil etmektedir.
 }
 console.log(yazi);
+
+
+
+
+
