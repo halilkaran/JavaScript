@@ -166,20 +166,24 @@ const people2 =   people.map((p) => ({
  console.log(people2);
 
 //* EXAMPLE4: List the person's names whose age is under 33.
-const filteredName = people.filter((p) => {
-  if (p.age < 33)
-    return p.name
-}).map((e)=>e.name)
+const filteredName = people.filter((p) => p.age<33).map((e)=>e.name)
 console.log(filteredName);
+
+//? alternative
+ people.filter((p) => p.age < 33).forEach((e) => console.log(e.name));
+
+
 //* EXAMPLE5: Store the names and ages of the developers as a new Object.
 const developers = people
   .filter((p) => {
-    if (p.job == "developer")
+    if (p.job == "developer")       //!! Wrong answer hard coding
       return {
         name: p.name,
          age: p.age 
       };
   })
+
+  //!!! rightig answer
 const developeralternative = people.filter((p) => p.job == "developer")
     .map((p)=>{return {
       name: p.name,
@@ -199,5 +203,6 @@ people.forEach(p => {
 })
 console.log(`avarage of people = ${avg/peoples}`);
 
-
+//?? bast solution
+const avga= people.reduce((acc,item)=> acc+item.age,0) / people.length()
  
