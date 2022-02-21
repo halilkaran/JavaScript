@@ -145,16 +145,59 @@ console.log(people);
 people.forEach((p) => console.log(p.name));
 
 //* EXAMPLE1: display the jobs in the people array.
-
+people.forEach((p) => console.log(p.job))
 
 //* EXAMPLE2: increment the ages by one and store them to a new array.
-
+const newArr = people.map((p) => ({
+  name: p.name,
+  surname: p.surname,
+  job: p.job,
+  age: p.age + 1
+}));
+ 
+console.log(newArr);
 //* EXAMPLE3: Create new Object which consists of uppercased name + surname and incremented the age by 5.
-
+const people2 =   people.map((p) => ({
+  name: p.name.toUpperCase(),
+  surname: p.surname.toUpperCase(),
+  job: p.job,
+  age: p.age + 5
+}));
+ console.log(people2);
 
 //* EXAMPLE4: List the person's names whose age is under 33.
-
-
+const filteredName = people.filter((p) => {
+  if (p.age < 33)
+    return p.name
+}).map((e)=>e.name)
+console.log(filteredName);
 //* EXAMPLE5: Store the names and ages of the developers as a new Object.
+const developers = people
+  .filter((p) => {
+    if (p.job == "developer")
+      return {
+        name: p.name,
+         age: p.age 
+      };
+  })
+const developeralternative = people.filter((p) => p.job == "developer")
+    .map((p)=>{return {
+      name: p.name,
+      age: p.age
+    };
+})
+
+   console.log(developers);
+   console.log(developeralternative);
 
 //* EXAMPLE6: calculate avg age of  people.
+let avg = 0;
+let peoples = 0;
+people.forEach(p => {
+  avg += p.age
+  peoples++
+})
+console.log(`avarage of people = ${avg/peoples}`);
+
+
+ 
