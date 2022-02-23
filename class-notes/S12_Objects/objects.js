@@ -64,7 +64,7 @@ person["dob"] = 1990;
 person.age = 40;
 console.log(person);
 
-const worker = person; //* Swallow Copying
+const worker = person; //* Shallow Copying
 worker.salary = 40000;
 console.log("WORKER", worker); //* Same
 console.log("PERSON", person); //* Same
@@ -141,68 +141,35 @@ const people = [
   },
 ];
 
-console.log(people);
-people.forEach((p) => console.log(p.name));
+// console.log(people);
+// people.forEach((p) => console.log(p.name));
 
 //* EXAMPLE1: display the jobs in the people array.
-people.forEach((p) => console.log(p.job))
+people.forEach((p) => console.log(p.job));
 
 //* EXAMPLE2: increment the ages by one and store them to a new array.
-const newArr = people.map((p) => ({
-  name: p.name,
-  surname: p.surname,
-  job: p.job,
-  age: p.age + 1
-}));
- 
-console.log(newArr);
+const ages = people.map((p) => p.age + 1);
+console.log(ages);
+
 //* EXAMPLE3: Create new Object which consists of uppercased name + surname and incremented the age by 5.
-const people2 =   people.map((p) => ({
-  name: p.name.toUpperCase(),
-  surname: p.surname.toUpperCase(),
-  job: p.job,
-  age: p.age + 5
+const leute = people.map((i) => ({
+  name: i.name.toUpperCase() + " " + i.surname.toUpperCase(),
+  age: i.age + 5,
 }));
- console.log(people2);
-
+console.log(leute);
 //* EXAMPLE4: List the person's names whose age is under 33.
-const filteredName = people.filter((p) => p.age<33).map((e)=>e.name)
-console.log(filteredName);
-
-//? alternative
- people.filter((p) => p.age < 33).forEach((e) => console.log(e.name));
-
+people.filter((p) => p.age < 33).forEach((p) => console.log(p.name));
+//? Alternative way
+const deneme = people.filter((p) => p.age < 33).map((p) => p.name);
+console.log(deneme);
 
 //* EXAMPLE5: Store the names and ages of the developers as a new Object.
 const developers = people
-  .filter((p) => {
-    if (p.job == "developer")       //!! Wrong answer hard coding
-      return {
-        name: p.name,
-         age: p.age 
-      };
-  })
-
-  //!!! rightig answer
-const developeralternative = people.filter((p) => p.job == "developer")
-    .map((p)=>{return {
-      name: p.name,
-      age: p.age
-    };
-})
-
-   console.log(developers);
-   console.log(developeralternative);
-
+  .filter((p) => p.job == "developer")
+  .map((i) => {
+    return { devName: i.name, age: i.age };
+  });
+console.log(developers);
 //* EXAMPLE6: calculate avg age of  people.
-let avg = 0;
-let peoples = 0;
-people.forEach(p => {
-  avg += p.age
-  peoples++
-})
-console.log(`avarage of people = ${avg/peoples}`);
-
-//?? bast solution
-const avga= people.reduce((acc,item)=> acc+item.age,0) / people.length()
- 
+const avgAges = people.reduce((acc, item) => acc + item.age, 0) / people.length;
+console.log(avgAges);
